@@ -9,14 +9,18 @@ class LinkedList:
 
     def insertData(self, data, pos):
         newNode = Node(data)
-        count = 1
-        temp = self.head
-        pos = pos - 1
-        while count < pos:
-            temp = temp.next
-            count = count + 1
-        newNode.next = temp.next
-        temp.next = newNode
+        if pos != 1:
+            count = 1
+            temp = self.head
+            while count < pos-1:
+                temp = temp.next
+                count = count + 1
+            newNode.next = temp.next
+            temp.next = newNode
+        
+        if pos == 1:
+            newNode.next = self.head
+            self.head = newNode
     
     def printList(self):
         temp = self.head
